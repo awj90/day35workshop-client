@@ -1,0 +1,29 @@
+<div class="grid-container">
+  <form [formGroup]="form">
+    <table class="center">
+      <tr>
+        <td>Search Book Title:</td>
+        <td>
+          <input
+            matInput
+            type="text"
+            size="30"
+            placeholder="Type here"
+            formControlName="keyword"
+            required
+            #title
+          />
+        </td>
+      </tr>
+    </table>
+  </form>
+</div>
+<hr />
+<!-- use of template element #title to hide search results if the input field is blank -->
+<div *ngIf="title.value.trim().length > 0" class="center">
+  <a
+    *ngFor="let bookSummary of resp$ | async"
+    href="http://localhost:8080/api/book/{bookSummary.bookID}"
+    ><div>{{ bookSummary.bookID }} - {{ bookSummary.title }}</div>
+  </a>
+</div>
