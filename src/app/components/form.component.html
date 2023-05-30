@@ -23,7 +23,7 @@
 <div *ngIf="title.value.trim().length > 0" class="center">
   <a
     *ngFor="let bookSummary of resp$ | async"
-    href="http://localhost:8080/api/book/{bookSummary.bookID}"
+    href="http://localhost:8080/api/book/{{bookSummary.bookID}}"
     ><div>{{ bookSummary.bookID }} - {{ bookSummary.title }}</div>
   </a>
 </div>
